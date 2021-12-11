@@ -1,6 +1,9 @@
 /*
 Git: https://github.com/dalacquar/entidade_relacionamento
 */
+
+use aula_db1;
+
 DROP TABLE IF EXISTS PRODUTO_PEDIDO;
 DROP TABLE IF EXISTS PEDIDO;
 DROP TABLE IF EXISTS PRODUTO;
@@ -33,7 +36,7 @@ CREATE TABLE SUBCATEGORIA (
 );
 
 CREATE TABLE FORNECEDOR (
-    cnpj INTEGER PRIMARY KEY,
+    cnpj VARCHAR(100) PRIMARY KEY,
     nome VARCHAR(100),
     telefone VARCHAR(100)
 );
@@ -45,7 +48,7 @@ CREATE TABLE PRODUTO (
     preco FLOAT,
     id_categoria INTEGER,
     id_marca INTEGER,
-    id_fornecedor INTEGER,
+    id_fornecedor VARCHAR(100),
     FOREIGN KEY (id_categoria) REFERENCES CATEGORIA (id),
     FOREIGN KEY (id_marca) REFERENCES MARCA (id),
     FOREIGN KEY (id_fornecedor) REFERENCES FORNECEDOR (cnpj)
@@ -56,7 +59,7 @@ CREATE TABLE USUARIO (
     nome VARCHAR(100),
     email VARCHAR(100),
     telefone VARCHAR(100),
-    senha VARCHAR(16)
+    senha VARCHAR(100)
 );
 
 CREATE TABLE ENDERECO (
